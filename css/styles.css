@@ -78,6 +78,7 @@ a {
 
 .brand-copy strong {
     font-size: 1.16rem;
+    color: var(--text-main);
 }
 
 .brand-copy small {
@@ -243,6 +244,10 @@ a {
     font-size: 0.88rem;
 }
 
+.panel-grid strong {
+    color: var(--text-main);
+}
+
 .section-block {
     padding: 5.5rem 0;
     background: #FFFFFF;
@@ -360,6 +365,17 @@ a {
     padding: 2.2rem;
 }
 
+.process-card .section-head h2,
+.step-item h3,
+.info-card h2,
+.form-card h2 {
+    color: var(--text-main);
+}
+
+.process-card .section-head p {
+    color: var(--text-soft);
+}
+
 .step-item {
     height: 100%;
     padding: 1.1rem;
@@ -397,6 +413,30 @@ a {
 .contact-links a {
     color: var(--gold);
     font-weight: 600;
+}
+
+.map-frame {
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background: rgba(10, 45, 46, 0.88);
+}
+
+.map-frame iframe {
+    width: 100%;
+    min-height: 360px;
+    border: 0;
+}
+
+.map-note {
+    color: var(--muted-ink);
+    font-size: 0.95rem;
+}
+
+.map-note a {
+    color: var(--gold);
+    text-decoration: underline;
 }
 
 .form-label {
