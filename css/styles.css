@@ -120,8 +120,13 @@ button, .btn, a {
     font-weight: 600;
     font-size: 0.91rem;
     letter-spacing: 0.01em;
+    white-space: nowrap;
     position: relative;
     transition: color var(--transition-smooth);
+}
+
+.site-navbar .btn-cta {
+    white-space: nowrap;
 }
 
 .navbar .nav-link.active {
@@ -234,7 +239,7 @@ button, .btn, a {
     padding: 11rem 0 6rem;
     background:
         linear-gradient(135deg, rgba(8, 21, 40, 0.92) 0%, rgba(13, 31, 60, 0.72) 55%, rgba(13, 31, 60, 0.38) 100%),
-        url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2000&q=80") center/cover no-repeat;
+        url("../images/site/hero.webp") center/cover no-repeat;
     overflow: hidden;
 }
 
@@ -247,10 +252,20 @@ button, .btn, a {
 }
 
 .hero-section h1 {
-    max-width: 13ch;
-    font-size: clamp(3rem, 6.5vw, 5.6rem);
-    line-height: 0.92;
+    max-width: 18ch;
+    font-size: clamp(2.7rem, 5.6vw, 4.8rem);
+    line-height: 0.98;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    max-width: 30ch;
     margin-bottom: 1.1rem;
+    color: var(--cta-hover);
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+    font-style: italic;
+    line-height: 1.25;
 }
 
 .hero-section h1,
@@ -446,6 +461,7 @@ button, .btn, a {
     font-family: "Cormorant Garamond", serif;
     font-size: 2.1rem;
     line-height: 1;
+    white-space: nowrap;
 }
 
 .metric-item span {
@@ -1066,6 +1082,61 @@ select.form-control option {
     transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
 }
 
+.mobile-cta-bar {
+    display: none;
+}
+
+@media (max-width: 767.98px) {
+    body {
+        padding-bottom: 4.4rem;
+    }
+
+    .mobile-cta-bar {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1040;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+        padding: 0.6rem 1rem calc(0.6rem + env(safe-area-inset-bottom));
+        background: rgba(6, 14, 30, 0.97);
+        border-top: 1px solid rgba(196, 147, 58, 0.25);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+    .mobile-cta-bar a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        min-height: 48px;
+        border-radius: var(--radius-sm);
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    .mobile-cta-call {
+        background: var(--cta);
+        color: #1a1005;
+    }
+
+    .mobile-cta-wa {
+        background: #25d366;
+        color: #ffffff;
+    }
+
+    .whatsapp-fab {
+        display: none !important;
+    }
+
+    .back-to-top {
+        bottom: 5.4rem !important;
+    }
+}
+
 .back-to-top.visible {
     opacity: 1;
     pointer-events: auto;
@@ -1186,7 +1257,7 @@ select.form-control option {
 /* ============================================================
    Responsive breakpoints
    ============================================================ */
-@media (max-width: 991.98px) {
+@media (max-width: 1199.98px) {
     .navbar-collapse {
         margin-top: 1rem;
         padding: 1rem;
@@ -1194,7 +1265,9 @@ select.form-control option {
         background: rgba(8, 21, 40, 0.97);
         border: 1px solid rgba(196, 147, 58, 0.18);
     }
+}
 
+@media (max-width: 991.98px) {
     .hero-section {
         padding-top: 9rem;
     }
