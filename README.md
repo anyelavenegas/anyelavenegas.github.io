@@ -8,6 +8,6 @@ El proyecto incluye una pagina `404.html` personalizada para manejar rutas no ex
 ### Como probarla
 
 1. En local: abra una ruta inexistente, por ejemplo `http://localhost:5500/no-existe`.
-2. En GitHub Pages: abra `https://anyelavenegas.github.io/no-existe`.
+2. En GitHub Pages: abra `https://anyelavenegas.com/no-existe`.
 
 Si esta configurado correctamente, se mostrara la pagina 404 con boton de retorno al inicio y acceso a WhatsApp.
