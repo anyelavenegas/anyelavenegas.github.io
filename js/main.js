@@ -17,18 +17,26 @@ const updateNavbarState = () => {
     nav.classList.toggle("is-compact", window.scrollY > 24);
 };
 
-const updateActiveLink = () => {
-    const offset = window.scrollY + 140;
-    sections.forEach((section) => {
-        const top = section.offsetTop;
-        const bottom = top + section.offsetHeight;
-        if (offset >= top && offset < bottom) {
-            navLinks.forEach((link) => {
-                link.classList.toggle("active", link.getAttribute("href") === `#${section.id}`);
-            });
-        }
+// The active menu link follows the section crossing a band near the top of the
+// viewport. IntersectionObserver avoids reading layout (offsetTop) from script,
+// which would force expensive recalculations while the page is loading.
+const setActiveLink = (id) => {
+    navLinks.forEach((link) => {
+        link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
     });
 };
+
+if (sections.length) {
+    const sectionObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) setActiveLink(entry.target.id);
+            });
+        },
+        { rootMargin: "-140px 0px -55% 0px" }
+    );
+    sections.forEach((section) => sectionObserver.observe(section));
+}
 
 const updateBackToTop = () => {
     if (!backToTop) return;
@@ -43,15 +51,22 @@ navLinks.forEach((link) => {
     });
 });
 
-window.addEventListener("scroll", () => {
+let scrollTicking = false;
+
+const onScroll = () => {
     updateNavbarState();
-    updateActiveLink();
     updateBackToTop();
+    scrollTicking = false;
+};
+
+window.addEventListener("scroll", () => {
+    if (!scrollTicking) {
+        scrollTicking = true;
+        requestAnimationFrame(onScroll);
+    }
 }, { passive: true });
 
-updateNavbarState();
-updateActiveLink();
-updateBackToTop();
+requestAnimationFrame(onScroll);
 
 if (backToTop) {
     backToTop.addEventListener("click", () => {
